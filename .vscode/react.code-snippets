@@ -1,0 +1,14 @@
+{
+	"component": {
+		"prefix": "/component",
+		"body": [
+			"export function ${TM_FILENAME_BASE/[^a-zA-Z0-9]*([a-zA-Z0-9])([a-zA-Z0-9]*)/${1:/capitalize}${2}/g}() {",
+			" return (",
+			"  <div>",
+			"    <h1>Unknown Component</h1>",
+			"  </div>",
+			" )",
+			"}"
+		]
+	}
+}
