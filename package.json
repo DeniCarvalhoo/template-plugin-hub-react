@@ -4,15 +4,17 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Template React para Plugin VERT Hub",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start": "http-server dist -p 5001",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --port 5001 --strictPort"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
-    "@vert-capital/hub-plugin-style": "file:../vert-hub-plugin-style/vert-capital-hub-plugin-style-1.0.0.tgz",
+    "@vert-capital/hub-plugin-style": "1.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
@@ -22,13 +24,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@module-federation/vite": "1.1.9",
     "@tailwindcss/vite": "4.1.11",
     "@types/node": "24.0.7",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@vitejs/plugin-react": "4.5.2",
     "globals": "16.2.0",
+    "http-server": "^14.1.1",
     "tailwindcss": "4.1.11",
     "typescript": "5.8.3",
     "vite": "7.0.0"

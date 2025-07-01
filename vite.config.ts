@@ -11,4 +11,23 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  define: {
+    "process.env": {}, // ⬅️ necessário para IIFE funcionar corretamente no browser
+  },
+  build: {
+    lib: {
+      entry: "src/main.tsx",
+      formats: ["iife"],
+      name: "PluginButtonCustom",
+      fileName: () => "index.js",
+    },
+    rollupOptions: {
+      treeshake: false,
+    },
+  },
+  server: {
+    host: true, // ou '0.0.0.0'
+    port: 5001,
+    strictPort: true,
+  },
 });

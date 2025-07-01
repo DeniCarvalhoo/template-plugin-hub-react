@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  plugin-hub-react:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/app
+      - /app/node_modules

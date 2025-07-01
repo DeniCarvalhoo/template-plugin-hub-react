@@ -1,0 +1,18 @@
+# Usa uma imagem oficial do Node.js como base
+FROM node:20-alpine
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia os arquivos de dependências primeiro para aproveitar o cache do Docker
+COPY package.json pnpm-lock.yaml ./
+
+# Instala o PNPM globalmente
+RUN npm install -g pnpm@10.4.0 && pnpm install --frozen-lockfile
+
+# Copia todo o código-fonte
+COPY . .
+
+EXPOSE 5001
+
+CMD [ "pnpm", "dev" ]
