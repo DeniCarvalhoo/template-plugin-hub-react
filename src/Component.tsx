@@ -4,7 +4,7 @@ function Component() {
   return (
     <>
       <div className="hub:w-auto hub:h-auto">
-        <Button variant={"default"}>Olá VERT Hub!</Button>
+        <Button variant={"default"}>Olá VERT Hub</Button>
       </div>
     </>
   );
