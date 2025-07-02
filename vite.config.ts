@@ -26,13 +26,13 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         treeshake: true,
-        external: ["react", "react-dom"],
-        output: {
-          globals: {
-            react: "React",
-            "react-dom": "ReactDOM",
-          },
-        },
+        // external: ["react", "react-dom"],
+        // output: {
+        //   globals: {
+        //     react: "React",
+        //     "react-dom": "ReactDOM",
+        //   },
+        // },
       },
     },
     server: {
