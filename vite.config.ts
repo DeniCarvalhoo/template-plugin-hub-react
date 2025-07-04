@@ -4,35 +4,13 @@ import path from "node:path";
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => {
-  const isDev = mode === "development";
-
+// biome-ignore lint/correctness/noEmptyPattern: <explanation>
+export default defineConfig(({}) => {
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
-      },
-    },
-    define: {
-      "process.env": {}, // ⬅️ necessário para IIFE funcionar corretamente no browser
-    },
-    build: {
-      lib: {
-        entry: isDev ? "src/preview.tsx" : "src/main.tsx",
-        formats: ["iife"],
-        name: "PluginButtonCustom",
-        fileName: () => "index.js",
-      },
-      rollupOptions: {
-        treeshake: true,
-        // external: ["react", "react-dom"],
-        // output: {
-        //   globals: {
-        //     react: "React",
-        //     "react-dom": "ReactDOM",
-        //   },
-        // },
       },
     },
     server: {

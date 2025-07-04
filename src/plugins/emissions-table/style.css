@@ -1,0 +1,6 @@
+/* Não alterar essas duas linhas */
+@import "@vert-capital/hub-plugin-style/style";
+@source "./";
+
+/* Daqui para baixo inclua apenas os caminhis relativos que realmente são necessários para este plugin */
+/* Exemplo: @source "../../components/ui/button.tsx"; */
