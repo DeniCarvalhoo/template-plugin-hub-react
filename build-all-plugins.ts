@@ -55,19 +55,29 @@ for (const pluginDir of plugins) {
     },
   });
 
-  // 🔍 Verifica se há screenshots
+  // 🔍 Verifica se há screenshots e copia para o build, se existirem
   const screenshotsDir = path.resolve(pluginPath, "screenshots");
   let screenshots: string[] = [];
 
   try {
     const files = await fs.readdir(screenshotsDir);
-    screenshots = files
-      .filter((f) =>
-        [".png", ".jpg", ".jpeg", ".webp", ".gif"].includes(
-          path.extname(f).toLowerCase(),
-        ),
-      )
-      .map((f) => `/${pluginDir}/screenshots/${f}`);
+    const imageFiles = files.filter((f) =>
+      [".png", ".jpg", ".jpeg", ".webp", ".gif"].includes(
+        path.extname(f).toLowerCase(),
+      ),
+    );
+    screenshots = imageFiles.map((f) => `/${pluginDir}/screenshots/${f}`);
+
+    if (imageFiles.length > 0) {
+      const destScreenshotsDir = path.resolve(outDir, "screenshots");
+      await fs.mkdir(destScreenshotsDir, { recursive: true });
+      for (const file of imageFiles) {
+        await fs.copyFile(
+          path.resolve(screenshotsDir, file),
+          path.resolve(destScreenshotsDir, file),
+        );
+      }
+    }
   } catch {
     // Pasta não existe ou não é acessível
     screenshots = [];
