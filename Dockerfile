@@ -19,10 +19,13 @@ COPY . .
 # Gerar migrações do Drizzle e construir a aplicação
 RUN pnpm build
 
-EXPOSE 5001
 
 # Tornar o entrypoint executável
 RUN chmod +x ./docker_assets/entrypoint.sh
 
 # Usar o entrypoint customizado
-CMD ["sh", "./docker_assets/entrypoint.sh"]
+ENTRYPOINT ["sh", "./docker_assets/entrypoint.sh"]
+
+EXPOSE 5001
+
+CMD []

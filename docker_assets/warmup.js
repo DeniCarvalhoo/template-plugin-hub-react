@@ -1,6 +1,6 @@
-const fs = require("node:fs");
-const https = require("https");
-const http = require("http");
+import http from "http";
+import https from "https";
+import fs from "node:fs";
 
 const MANIFEST_PATH = "/app/dist/manifest.json";
 const BASE_API_HUB = process.env.BASE_API_HUB;
