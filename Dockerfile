@@ -1,8 +1,9 @@
 # Base da imagem
 FROM node:20-alpine AS production
 
-# Instalar curl e pnpm globalmente
-RUN npm install -g pnpm@10.4.0
+# Instalar curl, netcat e pnpm globalmente
+RUN apk add --no-cache curl netcat-openbsd && \
+    npm install -g pnpm@10.4.0
 
 # Definir diretório de trabalho
 WORKDIR /app
@@ -19,4 +20,9 @@ COPY . .
 RUN pnpm build
 
 EXPOSE 5001
-CMD ["pnpm", "start"]
+
+# Tornar o entrypoint executável
+RUN chmod +x ./docker_assets/entrypoint.sh
+
+# Usar o entrypoint customizado
+CMD ["sh", "./docker_assets/entrypoint.sh"]
