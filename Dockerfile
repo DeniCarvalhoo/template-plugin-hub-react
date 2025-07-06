@@ -15,9 +15,8 @@ RUN pnpm install --frozen-lockfile
 
 # Copiar o restante do código da aplicação
 COPY . .
-RUN npm install -g http-server
 # Gerar migrações do Drizzle e construir a aplicação
 RUN pnpm build
 
 EXPOSE 5001
-CMD ["http-server", "dist", "-p", "5001"]
+CMD ["pnpm", "start"]

@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsx build-all-plugins.ts",
-    "start": "http-server dist -p 5001",
+    "start": "node server.js",
     "lint": "npx biome lint ./src/",
     "create-plugin": "tsx create-plugin.ts"
   },
@@ -20,7 +20,9 @@
     "@vert-capital/hub-plugin-style": "1.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^17.0.1",
+    "express": "^5.1.0",
     "lucide-react": "^0.525.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -29,12 +31,12 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@tailwindcss/vite": "4.1.11",
+    "@types/express": "^5.0.3",
     "@types/node": "24.0.7",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@vitejs/plugin-react": "4.5.2",
     "globals": "16.2.0",
-    "http-server": "^14.1.1",
     "tailwindcss": "4.1.11",
     "tsx": "^4.20.3",
     "typescript": "5.8.3",
